@@ -109,14 +109,10 @@ func cancelOrderHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(order)
 }
 
-func checkProductAvailability(products []Product) bool {
-
-	for _, product := range products {
-		if rand.Intn(2) == 0 {
-			return false 
-		}
-	}
-	return true
+func someFunction() {
+    for _, product := range products {
+        fmt.Println(product)
+    }
 }
 
 func updateStock(products []Product) {
