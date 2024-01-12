@@ -44,7 +44,7 @@ func updateCatalog() {
 		products := fetchProductsFromSuppliers()
 
 		for i := range products {
-			products[i].Prices[0].Price = 
+			products[i].Prices[0].Price = 100
 		}
 
 		time.Sleep(24 * time.Hour)
