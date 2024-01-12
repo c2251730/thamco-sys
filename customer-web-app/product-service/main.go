@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"time"
 )
 
 type Product struct {
@@ -44,12 +43,15 @@ func updateStockHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	for id, product := range products {
-		newStock := product.Stock + randomStockChange()
+	for id := range products {
+		newStock := products[id].Stock + randomStockChange()
 		if newStock < 0 {
 			newStock = 0
 		}
-		products[id].Stock = newStock
+		// Update the stock using a temporary variable
+		product := products[id]
+		product.Stock = newStock
+		products[id] = product
 	}
 
 	fmt.Println("Stock status updated.")
@@ -58,6 +60,7 @@ func updateStockHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func randomStockChange() int {
-
-	return -5 + rand.Intn(11) 
+	// Ensure you have imported the "math/rand" package
+	return -5 + rand.Intn(11)
 }
+
