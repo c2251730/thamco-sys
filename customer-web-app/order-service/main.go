@@ -5,16 +5,15 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-	"math/rand"
 )
 
 type Order struct {
-	ID           string    `json:"id"`
-	CustomerID   string    `json:"customerId"`
-	Products     []Product `json:"products"`
-	Status       string    `json:"status"`
-	CreatedAt    time.Time `json:"createdAt"`
-	UpdatedAt    time.Time `json:"updatedAt"`
+	ID           string        `json:"id"`
+	CustomerID   string        `json:"customerId"`
+	Products     []Product     `json:"products"`
+	Status       string        `json:"status"`
+	CreatedAt    time.Time     `json:"createdAt"`
+	UpdatedAt    time.Time     `json:"updatedAt"`
 	DeliveryInfo DeliveryInfo `json:"deliveryInfo"`
 }
 
@@ -24,8 +23,8 @@ type Product struct {
 }
 
 type DeliveryInfo struct {
-	Address       string `json:"address"`
-	PhoneNumber   string `json:"phoneNumber"`
+	Address     string `json:"address"`
+	PhoneNumber string `json:"phoneNumber"`
 }
 
 var orders = make(map[string]Order)
@@ -109,13 +108,19 @@ func cancelOrderHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(order)
 }
 
-func someFunction() {
-    for _, product := range products {
-        fmt.Println(product)
-    }
+func someFunction(products []Product) {
+	for _, product := range products {
+		fmt.Println(product)
+	}
 }
 
 func updateStock(products []Product) {
+	// ... (your implementation)
+}
+
+func checkProductAvailability(products []Product) bool {
+	// ... (your implementation)
+	return true
 }
 
 func sendEmailNotification(order Order) {
