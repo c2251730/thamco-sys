@@ -42,6 +42,12 @@ This repository contains the codebase for an e-commerce platform, consisting of 
   - View customer profiles, funds, and order history.
   - Delete a customer account with personal data erasure/anonymization.
 
+- **Product Management:**
+  - Retrieves product information from approved suppliers.
+  - Calculates and updates prices based on the cheapest supplier plus 
+    10% markup.
+  - Implements daily automated updates.
+
 ## Architecture
 
 ### Frontend
