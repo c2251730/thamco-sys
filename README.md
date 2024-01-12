@@ -54,7 +54,7 @@ This repository contains the codebase for an e-commerce platform, consisting of 
 
 ### Backend
 
-- Microservices Architecture: Node.js with Express.
+- Microservices Architecture: Golang.
 - Databases: MongoDB or PostgreSQL.
 - Message Queue: RabbitMQ or Apache Kafka.
 - Elasticache: Redis for caching.
