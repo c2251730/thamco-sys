@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+        "math/rand"
 	"net/http"
 )
 
@@ -48,7 +49,6 @@ func updateStockHandler(w http.ResponseWriter, r *http.Request) {
 		if newStock < 0 {
 			newStock = 0
 		}
-		// Update the stock using a temporary variable
 		product := products[id]
 		product.Stock = newStock
 		products[id] = product
@@ -60,7 +60,7 @@ func updateStockHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func randomStockChange() int {
-	// Ensure you have imported the "math/rand" package
 	return -5 + rand.Intn(11)
 }
+
 
