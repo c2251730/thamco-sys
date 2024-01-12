@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"time"
@@ -73,7 +74,7 @@ func createJWTToken(user *User) (string, error) {
 		Username: user.Username,
 		Role:     user.Role,
 		StandardClaims: jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(), 
+			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
 		},
 	}
 
@@ -103,6 +104,9 @@ func main() {
 
 	router.HandleFunc("/authenticate", authenticateHandler).Methods("POST")
 
-	http.Handle("/", router)
-	http.ListenAndServe(":8080", nil)
+	// Error handling for http.ListenAndServe
+	err := http.ListenAndServe(":8080", router)
+	if err != nil {
+		fmt.Println("Error starting the server:", err)
+	}
 }
