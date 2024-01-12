@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"time"
 )
@@ -25,7 +24,7 @@ type Catalog struct {
 
 func CalculateFinalPrice(product Product) float64 {
 	if len(product.Prices) == 0 {
-		return 0.0 
+		return 0.0
 	}
 
 	cheapestPrice := product.Prices[0].Price
