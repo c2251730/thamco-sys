@@ -1,0 +1,60 @@
+name: Customer Microservices CI
+
+on:
+  push:
+    branches:
+      - staging
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with: 
+          go-version: 1.21
+
+      - name: initialize Go Modules
+        run:  go mod init test3  
+
+      - name: Clean UP Go Module
+        run: go mod tidy  
+
+      - name: Install Go Package
+        run:  go get -u github.com/google/go-github/v29
+
+      - name: Build and Test User Service 
+        run: |
+          cd customer-web-app/user-service 
+          go build -v
+          go test -v 
+
+      - name: Build and Test Product Service
+        run: |
+          cd customer-web-app/product-service
+          go build -v .
+          go test -v .
+
+      - name: Build and Test Order Service
+        run: |
+          cd customer-web-app/order-service
+          go build -v .
+          go test -v .
+
+      - name: Build and Test Payment Service
+        run: |
+          cd customer-web-app/payment-service
+          go build -v .
+          go test -v .
+
+      - name: Build and Test Notification Service
+        run: |
+          cd customer-web-app/notification-service
+          go build -v .
+          go test -v .
+
+      
