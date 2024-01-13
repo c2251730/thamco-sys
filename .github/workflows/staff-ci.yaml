@@ -77,13 +77,13 @@ jobs:
         run: |
           cd staff-web-app/order-management-service
           go test -v .
+          
+     - name: Test Product Management Service
+       run: |
+         cd staff-web-app/product-management-service
+         go test -v .
 
-      - name: Test Product Management Service
-        run: |
-          cd staff-web-app/product-management-service
-          go test -v .
-
-      - name: Test Staff Authentication Service
-        run: |
-          cd staff-web-app/staff-authentication-service
-          go test -v .
+     - name: Test Staff Authentication Service
+       run: |
+        cd staff-web-app/staff-authentication-service
+        go test -v .
