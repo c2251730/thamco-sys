@@ -50,3 +50,4 @@ jobs:
           cd staff-web-app/staff-authentication-service
           go build -v .
           go test -v .
+
