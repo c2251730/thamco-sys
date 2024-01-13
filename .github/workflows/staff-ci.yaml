@@ -46,7 +46,7 @@ jobs:
         run: |
           cd staff-web-app/staff-authentication-service
           go build -v .
-
+          
   test:
     runs-on: ubuntu-latest
 
