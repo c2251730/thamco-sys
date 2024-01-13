@@ -1,0 +1,48 @@
+name: Customer CD Pipeline
+
+on:
+  push:
+    branches:
+      - deployment
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+              
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: mimi2
+          password: mimi002@@
+          
+      - name: Build and push Docker image for order-service
+        run: |
+          docker build -t mimi2/order-service ./customer-web-app/order-service
+          docker push mimi2/order-service
+
+      - name: Build and push Docker image for payment-service
+        run: |
+          docker build -t mimi2/payment-service ./customer-web-app/payment-service
+          docker push mimi2/payment-service
+
+      - name: Build and push Docker image for user-service
+        run: |
+          docker build -t mimi2/user-service ./customer-web-app/user-service
+          docker push mimi2/user-service
+
+      - name: Build and push Docker image for notification-service
+        run: |
+          docker build -t mimi2/notification-service ./customer-web-app/notification-service
+          docker push mimi2/notification-service
+
+      - name: Build and push Docker image for product-service
+        run: |
+          docker build -t mimi2/product-service ./customer-web-app/product-service
+          docker push mimi2/product-service

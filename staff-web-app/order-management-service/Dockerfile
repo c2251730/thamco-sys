@@ -2,7 +2,7 @@ FROM golang:latest
 
 WORKDIR /app
 
-COPY ./staff-web-app/order-management-service/ .
+COPY . .
 
 RUN go mod init github.com/c2251730/thamco-sys
 

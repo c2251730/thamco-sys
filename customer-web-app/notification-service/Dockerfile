@@ -2,7 +2,7 @@ FROM golang:latest
 
 WORKDIR /app
 
-COPY ./customer-web-app/notification-service/ .
+COPY . .
 
 RUN go mod init github.com/c2251730/thamco-sys
 

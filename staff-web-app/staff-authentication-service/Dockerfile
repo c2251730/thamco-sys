@@ -8,8 +8,8 @@ RUN go mod init github.com/c2251730/thamco-sys
 
 RUN go mod tidy 
 
-RUN go build -o product-management-service .
+RUN go build -o staff-authentication-service .
 
 EXPOSE 8080
 
-CMD ["./product-management-service"]
+CMD ["./staff-authentication-service"]
