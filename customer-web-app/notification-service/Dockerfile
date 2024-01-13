@@ -2,13 +2,13 @@ FROM golang:latest
 
 WORKDIR /app
 
-COPY /main.go .
+COPY ./customer-web-app/notification-service/ .
 
 RUN go mod init github.com/c2251730/thamco-sys
 
 RUN go mod tidy 
 
-RUN go build main.go
+RUN go build -o email-microservice .
 
 EXPOSE 80
 
@@ -17,4 +17,4 @@ ENV SMTP_PORT=587
 ENV SMTP_USERNAME=your-smtp-username
 ENV SMTP_PASSWORD=your-smtp-password
 
-CMD ["./main"]
+CMD ["./notification-microservice"]
