@@ -27,29 +27,69 @@ jobs:
       - name: Install Go Package
         run:  go get -u github.com/google/go-github/v29
 
-      - name: Build and Test Customer Management Service
+      - name: Build Customer Management Service
         run: |
           cd staff-web-app/customer-management-service 
           go build -v
-          go test -v 
 
-      - name: Build and Test Order Management Service
+      - name: Build Order Management Service
         run: |
           cd staff-web-app/order-management-service
           go build -v .
-          go test -v .
 
-      - name: Build and Test Product Management Service
+      - name: Build Product Management Service
         run: |
           cd staff-web-app/product-management-service
           go build -v .
-          go test -v .
 
-      - name: Build and Test Staff Authentication Service
+      - name: Build Staff Authentication Service
         run: |
           cd staff-web-app/staff-authentication-service
           go build -v .
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with: 
+          go-version: 1.21
+
+      - name: initialize Go Modules
+        run:  go mod init test3  
+
+      - name: Clean UP Go Module
+        run: go mod tidy  
+
+      - name: Install Go Package
+        run:  go get -u github.com/google/go-github/v29
+
+      - name: Test Customer Management Service
+        run: |
+          cd staff-web-app/customer-management-service 
+          go test -v 
+
+      - name: Test Order Management Service
+        run: |
+          cd staff-web-app/order-management-service
           go test -v .
+
+      - name: Test Product Management Service
+        run: |
+          cd staff-web-app/product-management-service
+          go test -v .
+
+      - name: Test Staff Authentication Service
+        run: |
+          cd staff-web-app/staff-authentication-service
+          go test -v .
+
+
+      
 
 
       
